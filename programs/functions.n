@@ -1,0 +1,8 @@
+int thefunction (int x, int y = def () {
+  return 5;
+}) {
+  return y();
+}
+
+echo('Вызываем thefunction с аргументами 5, и undefined<br>');
+echo('Ответ функции: ' + str(thefunction(1)));

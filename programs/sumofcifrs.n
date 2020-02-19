@@ -1,0 +1,14 @@
+Py a = abs(int(16));
+Int suma = 0;
+
+Int mult = 1;
+
+while a > 0:
+  Py digit = a % 10;
+  suma += digit;
+  mult *= digit;
+  a = a // 10;
+;
+
+echo('Сумма равна: ' + str(suma) + '<br>');
+echo('Произведение: ' + str(mult));

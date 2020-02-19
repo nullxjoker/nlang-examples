@@ -1,0 +1,5 @@
+<?
+String DB_HOST     = 'localhost';
+String DB_USER     = '';
+String DB_NAME     = '';
+String DB_PASSWORD = '';

@@ -1,0 +1,9 @@
+List testlist = [
+  1, "Hello", def (int first, string second) { return str(first) + str(second); }
+];
+for key, value : testlist {
+  echo('Ключ: ' + str(key) + ', Значение: ' + str(value) + '<br>');
+}
+
+string testfunc = testlist[2];
+echo('Результат выполнения функции из массива: ' + testfunc(1, "Hello"));

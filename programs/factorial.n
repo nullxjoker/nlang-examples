@@ -1,0 +1,7 @@
+int factorial = 1;
+int n = 5;
+while n > 1:
+  factorial *= n;
+  n -= 1;
+;
+echo('Факториал равен ' + str(factorial));

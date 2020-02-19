@@ -1,0 +1,12 @@
+class Person {
+  public int age = 0;
+  public string name = "Безымянный";
+  public static void Person () {}
+}
+class Man : Person {
+  public void Man () {}
+}
+Man newman = new Man();
+newman.age = 15;
+newman.name = "Влад";
+echo('Имя: ' + newman.name + ', Возраст: ' + str(newman.age));

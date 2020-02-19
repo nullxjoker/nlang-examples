@@ -1,0 +1,101 @@
+<?
+# include('db.n');
+pyimport('datetime', ['datetime']);
+
+
+
+
+Dict programs = {};
+{
+  "sumofcifrs": {
+    "text": open('programs/sumofcifrs.n', encoding="utf-8").read();
+    "name": "Сумма и произведение цифр числа";
+    "desc": "''Дано число. Найти сумму и произведение его цифр.";
+    "python_time": '0.00011323392391204834';
+    "php_time": '(~ равно или меньше python)';
+    
+  };
+  "factorial": {
+    "text": open('programs/factorial.n', encoding="utf-8").read();
+    "name": "Факториал числа";
+    "desc": "''Дано число. Необходимо вычислить его факториал.";
+    "python_time": '0.00029684603214263916';
+    "php_time": '(~ равно или меньше python)';
+  };
+  "lists": {
+    "text": open('programs/lists.n', encoding="utf-8").read();
+    "name": "Работа со массивами";
+    "desc": "''Массивы в языке NLang.";
+    "python_time": '(не измеряется)';
+    "php_time": '(не измеряется)';
+  };
+  "dicts": {
+    "text": open('programs/dicts.n', encoding="utf-8").read();
+    "name": "Работа со словарями";
+    "desc": "''Словари в языке NLang.";
+    "python_time": '(не измеряется)';
+    "php_time": '(не измеряется)';
+  };
+  "classes": {
+    "text": open('programs/classes.n', encoding="utf-8").read();
+    "name": "ООП В языке NLang";
+    "desc": "''Классы и объекты в NLang";
+    "python_time": '(не измеряется)';
+    "php_time": '(не измеряется)(~ равно или меньше python)';
+  };
+  "functions": {
+    "text": open('programs/functions.n', encoding="utf-8").read();
+    "name": "Функции в языке NLang";
+    "desc": "''Как создавать и вызывать функции в NLang";
+    "python_time": '(не измеряется)';
+    "php_time": '(не измеряется)(~ равно или меньше python)';
+  };
+}.foreach(def (string key, dict value) {
+  programs[key] = value;
+});
+# hello world
+?>
+<html>
+  <head>
+    <title>Веб интерпретатор языка Nlang</title>
+    <link rel="stylesheet" href="/styles/main.css">
+    <meta charset="utf8">
+  </head>
+  <body>
+    <div class="body">
+      <div class="header">
+        <h1>Примеры программ на языке программирования Nlang</h1> 
+      </div>
+        
+        <? for key, program : programs : ?>
+          <form action="#<?=key?>" method="POST">
+            <input type="hidden" name="key" value="<?=key?>">
+            
+            <div class="program" id="<?=key?>">
+              <div class="desc">
+                <h2><?=program['name']?></h2>
+                <p><?=program['desc']?></p>
+              </div>
+              <? if POST['key'] == key {
+                int _start = time.perf_counter();
+                pyimport = None;
+                echo('Результат работы: <br>' + str(nlang(POST['program'])) + '<br>');
+                echo('Время выполнения программы: ' + str( time.perf_counter() - _start ) + ' сек <br>');
+                echo('Время выполнения в python: ' + program['python_time'] + ' сек <br>');
+                echo('Время выполнения в php: ' + program['php_time'] + ' сек <br>');
+                String theprevprogram = POST['program'];
+              } ?>
+              
+              <input type="submit" value="Запустить"><br>
+              <? if theprevprogram == None || POST['key'] != key: ?>
+                <textarea name="program" id="" cols="60" rows="14"><?=str(program['text']).strip()?></textarea>
+              <? else:
+                ?> <textarea name="program" id="" cols="60" rows="14"><?=str(theprevprogram).strip()?></textarea>
+              <? ; ?>
+            </div>
+          </form>
+        <?;?>
+        
+    </div>
+  </body>
+</html>
